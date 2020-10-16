@@ -10,8 +10,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/nodetest2');
 
-
-mongoose.connect('mongodb://localhost:27017/nodetest2')
+mongoose.connect('mongodb://localhost:27017/nodetest2',{useNewUrlParser: true, useUnifiedTopology: true});
 
 // var mainRoutes = require('./routes/main');
 var indexRouter = require('./routes/index');
