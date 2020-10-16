@@ -1,0 +1,110 @@
+extends layout
+
+block content
+  h1= title
+  p Duplicati  centralized management dashboard
+
+  // Wrapper
+  #wrapper
+
+    // USER INFO
+    #userInfo
+      h2 User Info for
+      <span id='userInfoName'></span>
+      p
+        strong IP:
+        |  <span id='userInfoIP'></span>
+        br
+        strong Job Status:
+        |  <span id='userInfoJobStat'></span>
+        br
+        strong Location:
+        |  <span id='userInfoLocation'></span>
+        br
+        strong HTML URL:
+        |  <span id='userInfoUserURL'></span>
+        br
+        strong Report:
+        br
+        |  <span id='userInfoReport'></span>
+        br
+       
+    // /USER INFO
+
+    .container.products-view-all
+        form.post-list
+            input(type='hidden', value='')
+        .clearfix
+            article.navbar-form.navbar-left.p-0.m-0.ml-b
+                .form-group
+                    label Per Page: 
+                    select.form-control.post_max.m-b
+                        option(value='5') 5
+                        option(value='10') 10
+                        option(value='25') 25
+                label Search Keyword: 
+                    input.form-control.post_search_text.m-b(type='text', placeholder='Enter a keyword')
+                .form-group
+                    label Order By: 
+                    select.form-control.post_name.m-b
+                        option(value='username') Username
+                        option(value='jobstat') Job Status
+                        //- option(value='quantity') Quantity
+                    select.form-control.post_sort.m-b
+                        option(value='ASC') ASC
+                        option(value='DESC') DESC
+                input.btn.btn-primary.post_search_submit.m-b(type='submit', value='Filter')
+        hr
+        // USER LIST
+        h2 User List
+        #userList
+          .clearfix#clearfix
+            table
+                thead
+                    th UserName
+                    th Status
+                    th Remote Access
+                    th Delete?
+                    th Update?
+                tbody.pagination-container.clearfix#clearfix
+        .pagination-nav 
+        // /USER LIST  
+
+    // ADD USER
+    div
+      #addUserForm
+        h2 Add User
+        #addUser
+          fieldset
+            input#inputUserName(type='text', placeholder='Username')
+            input#inputUserIP(type='text', placeholder='IP Address')
+            br
+            input#inputUserLocation(type='text', placeholder='Location')
+            //- input#inputUserURL(type='text', value"placeholder='HTML report URL')
+            br
+            input#inputUserJobStat(type='text', value="NeverRun" , placeholder='Job Status')
+            input#inputUserReport(type='text',value="NoReportYet" , placeholder='Report')
+            br
+            button#btnAddUser Add User
+    // /ADD USER
+
+    //UPDATE USER
+    div
+      #updateInfoChunk
+        h2 Update Info
+        #updateInfo
+          fieldset
+            input#updateUserName(type='text', placeholder='username')  
+            input#updateUserIP(type='text', placeholder='IP address')
+            br
+            input#updateUserLocation(type='text', placeholder='location')
+            //- input#inputUserURL(type='text', value"placeholder='HTML report URL')
+            br
+            button#btnUpdateUser Update User
+            button#btnCancelUpdateInfo Cancel
+    // /UPDATE USER  
+    
+  // /WRAPPER
+
+
+  
