@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
     var db = req.db;
 
     /* Set our collection */
-    users = db.get('userlist');
+    users = db.get('userlists');
      users.distinct("location",{},function(e,array){
 
         res.render('index', { title: 'Informant',array:array});
@@ -29,7 +29,7 @@ router.post('/users/view-front', function(req, res){
   var db = req.db;
   
       /* Set our collection */
-      users = db.get('userlist');
+      users = db.get('userlists');
       
       pag_content = '';
       pag_navigation = '';

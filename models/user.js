@@ -12,6 +12,6 @@ var ProductSchema = new Schema({
     reportURL:String
 })
 
-module.exports = mongoose.model('userlist', ProductSchema)
+module.exports = mongoose.model('userlists', ProductSchema)
 
 

@@ -32,7 +32,7 @@ router.get('/generate-fake-data', function(req, res, next) {
 /* GET userlist. */
 router.get('/userlist', function(req, res) {
   var db = req.db;
-  var collection = db.get('userlist');
+  var collection = db.get('userlists');
   collection.find({},{},function(e,docs){
     res.json(docs);
   });
@@ -41,7 +41,7 @@ router.get('/userlist', function(req, res) {
 /* POST to adduser. */
 router.post('/adduser', function(req, res) {
   var db = req.db;
-  var collection = db.get('userlist');
+  var collection = db.get('userlists');
 
   collection.insert(req.body, function(err, result){
     res.send(
@@ -56,7 +56,7 @@ router.updateinfo = function(db) {
   return function(req, res) {
       var userToUpdate = req.params.id;
       var doc = {$set: req.body};
-      db.collection('userlist').update(userToUpdate, doc, function(err, result) {
+      db.collection('userlists').update(userToUpdate, doc, function(err, result) {
           res.send((result == 1) ? {msg: ''} : {msg: 'Error: ' + err});
       });
   }
@@ -66,7 +66,7 @@ router.updateinfo = function(db) {
 /* DELETE to deleteuser. */
 router.delete('/deleteuser/:id', function(req, res) {
   var db = req.db;
-  var collection = db.get('userlist');
+  var collection = db.get('userlists');
   var userToDelete = req.params.id;
   collection.remove({ '_id' : userToDelete }, function(err) {
     res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
@@ -81,7 +81,7 @@ router.post('/report/:id', function(req, res) {
   var userID = req.params.id;
   req.body.userID = userID; 
   collection.insert(req.body, function(err, result){
-    db.get('userlist').update({_id:userID},{$set:{jobstat:result.Data.ParsedResult,report:result.Data.BackendStatistics}});
+    db.get('userlists').update({_id:userID},{$set:{jobstat:result.Data.ParsedResult,report:result.Data.BackendStatistics}});
 
     console.log(result.userID)
     
