@@ -10,7 +10,7 @@ block content
     // USER INFO
     #userInfo
       h2 User Info for
-      <span id='userInfoName'></span>
+      h3#userInfoName
       p
         strong IP:
         |  <span id='userInfoIP'></span>
@@ -39,9 +39,9 @@ block content
                 .form-group
                     label Per Page: 
                     select.form-control.post_max.m-b
-                        option(value='5') 5
-                        option(value='10') 10
-                        option(value='25') 25
+                        option(value='15') 15
+                        option(value='30') 30
+                        option(value='90') 90
                 label Search Keyword: 
                     input.form-control.post_search_text.m-b(type='text', placeholder='Enter a keyword')
                 .form-group
@@ -65,43 +65,49 @@ block content
                     th Status
                     th Remote Access
                     th Delete?
-                    th Update?
+                    th Update???
                 tbody.pagination-container.clearfix#clearfix
         .pagination-nav 
         // /USER LIST  
 
     // ADD USER
     div
-      #addUserForm
+      #addUserForm.input-group.mb-3
         h2 Add User
-        #addUser
+        #addUser.input-group-prepend
           fieldset
-            input#inputUserName(type='text', placeholder='Username')
-            input#inputUserIP(type='text', placeholder='IP Address')
+            input#inputUserName.form-control(type='text', placeholder='Username')
+            input#inputUserIP.form-control(type='text', placeholder='IP Address')
             br
-            input#inputUserLocation(type='text', placeholder='Location')
+            //- input#inputUserLocation.form-control(type='text', placeholder='Location')
+            +generateDropDownList('', 'browsers', array)
+            mixin generateDropDownList(label, id, array)
+             label(for=id) #{label}
+             input#inputUserLocation.form-control(type='text', placeholder='Location',list='browsers')
+             datalist(name=id placeholder=placeholder id=id)
+                each val in array
+                  option(value= val)
             //- input#inputUserURL(type='text', value"placeholder='HTML report URL')
             br
-            input#inputUserJobStat(type='text', value="NeverRun" , placeholder='Job Status')
-            input#inputUserReport(type='text',value="NoReportYet" , placeholder='Report')
+            input#inputUserJobStat.form-control(type='text', value="NeverRun" , placeholder='Job Status')
+            input#inputUserReport.form-control(type='text',value="NoReportYet" , placeholder='Report')
             br
-            button#btnAddUser Add User
+            button#btnAddUser.btn.btn-primary Add User
     // /ADD USER
 
     //UPDATE USER
     div
-      #updateInfoChunk
+      #updateInfoChunk.input-group.mb-3.hidden
         h2 Update Info
-        #updateInfo
+        #updateInfo.input-group-prepend
           fieldset
-            input#updateUserName(type='text', placeholder='username')  
-            input#updateUserIP(type='text', placeholder='IP address')
+            input#updateUserName.form-control(type='text', placeholder='username')  
+            input#updateUserIP.form-control(type='text', placeholder='IP address')
             br
-            input#updateUserLocation(type='text', placeholder='location')
-            //- input#inputUserURL(type='text', value"placeholder='HTML report URL')
+            input#updateUserLocation.form-control(type='text', placeholder='location')
             br
-            button#btnUpdateUser Update User
-            button#btnCancelUpdateInfo Cancel
+            button#btnUpdateUser.btn.btn-primary Update User
+            button#btnCancelUpdateInfo.btn.btn-outline-secondar Cancel
     // /UPDATE USER  
     
   // /WRAPPER

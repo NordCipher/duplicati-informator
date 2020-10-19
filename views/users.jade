@@ -1,43 +1,43 @@
-extends layout
+//- extends layout
 
-block content
-    .container.products-view-all
-        form.post-list
-            input(type='hidden', value='')
-        .clearfix
-            article.navbar-form.navbar-left.p-0.m-0.ml-b
-                .form-group
-                    label Per Page: 
-                    select.form-control.post_max.m-b
-                        option(value='5') 5
-                        option(value='10') 10
-                        option(value='25') 25
-                label Search Keyword: 
-                    input.form-control.post_search_text.m-b(type='text', placeholder='Enter a keyword')
-                .form-group
-                    label Order By: 
-                    select.form-control.post_name.m-b
-                        option(value='username') Username
-                        option(value='jobstat') Job Status
-                        //- option(value='quantity') Quantity
-                    select.form-control.post_sort.m-b
-                        option(value='ASC') ASC
-                        option(value='DESC') DESC
-                input.btn.btn-primary.post_search_submit.m-b(type='submit', value='Filter')
-        hr
-        // USER LIST
-        h2 User List
-        #userList
+//- block content
+//-     .container.products-view-all
+//-         form.post-list
+//-             input(type='hidden', value='')
+//-         .clearfix
+//-             article.navbar-form.navbar-left.p-0.m-0.ml-b
+//-                 .form-group
+//-                     label Per Page: 
+//-                     select.form-control.post_max.m-b
+//-                         option(value='5') 5
+//-                         option(value='10') 10
+//-                         option(value='25') 25
+//-                 label Search Keyword: 
+//-                     input.form-control.post_search_text.m-b(type='text', placeholder='Enter a keyword')
+//-                 .form-group
+//-                     label Order By: 
+//-                     select.form-control.post_name.m-b
+//-                         option(value='username') Username
+//-                         option(value='jobstat') Job Status
+//-                         //- option(value='quantity') Quantity
+//-                     select.form-control.post_sort.m-b
+//-                         option(value='ASC') ASC
+//-                         option(value='DESC') DESC
+//-                 input.btn.btn-primary.post_search_submit.m-b(type='submit', value='Filter')
+//-         hr
+        //- // USER LIST
+        //- h2 User List
+        //- #userList
             
          
-        .clearfix#clearfix
-            table
-                thead
-                    th UserName
-                    th Status
-                    th Remote Access
-                    th Delete?
-                    th Update?
-                tbody.pagination-container.clearfix#clearfix
-        .pagination-nav 
-        // /USER LIST  
+        //- .clearfix#clearfix
+        //-     table
+        //-         thead
+        //-             th UserName
+        //-             th Status
+        //-             th Remote Access
+        //-             th Delete?
+        //-             th Update?
+        //-         tbody.pagination-container.clearfix#clearfix
+        //- .pagination-nav 
+        //- // /USER LIST  

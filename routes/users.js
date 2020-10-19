@@ -38,16 +38,6 @@ router.get('/userlist', function(req, res) {
   });
 });
 
-/* GET userlist. */
-router.post('/userlist', function(req, res) {
-  var db = req.db;
-  var collection = db.get('userlist');
-  collection.find({},{},function(e,docs){
-    res.json(docs);
-  });
-});
-
-
 /* POST to adduser. */
 router.post('/adduser', function(req, res) {
   var db = req.db;

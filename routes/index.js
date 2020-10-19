@@ -3,9 +3,18 @@ var router = express.Router();
 var async = require('async');
 
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Informant' });
+
+    var db = req.db;
+
+    /* Set our collection */
+    users = db.get('userlist');
+     users.distinct("location",{},function(e,array){
+
+        res.render('index', { title: 'Informant',array:array});
+    });
 });
 
 /* GET users filter page. */
@@ -72,7 +81,7 @@ router.post('/users/view-front', function(req, res){
               
           }, function(err, docs){
               if (err) throw err;
-              // console.log(docs);
+            //   console.log(docs);
               all_items = docs;
               callback();
               
@@ -92,8 +101,8 @@ router.post('/users/view-front', function(req, res){
    
             for (var key in all_items) {
               pag_content += 
-                          '<tr>' + '<td><a href="#" class="linkshowuser" rel="' + all_items[key].username + '">' + all_items[key].username + '</a></td>'+'<td>' + all_items[key].jobstat + '</td>'+
-                          '<td><a href="http://' + all_items[key].IPaddress + '" target="_blank" class="linkremotedash">' + all_items[key].IPaddress + ':8300 </a></td>'+
+                          '<tr>' + '<td><a href="#" class="linkshowuser" rel="' + all_items[key].username + '">' + all_items[key].username + '</a></td>'+'<td id="jobstat-td" class="jobstat-class-'+ all_items[key].jobstat + '">' + all_items[key].jobstat + '</td>'+
+                          '<td><a href="http://' + all_items[key].IPaddress + '" target="_blank" class="linkremotedash">' + all_items[key].IPaddress + ':8200 </a></td>'+
                           '<td><a href="#" class="linkdeleteuser" rel="' + all_items[key]._id + '">delete</a></td>'+'<td><a href="#" class="linkupdateinfo" rel="' + all_items[key]._id + '">update</a></td>'+'</tr>'
           }
       }
@@ -170,8 +179,4 @@ router.post('/users/view-front', function(req, res){
 
 });
 
-
-
 module.exports = router;
-
-
