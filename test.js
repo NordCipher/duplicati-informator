@@ -7,7 +7,7 @@ const faker = require('faker')
 for (let i = 0; i < 8; i++) { 
   
     // Fake ip address 
-    const ip = faker.name.jobType() 
+    const ip = faker.fake("NeverRun" or "Run") 
   
     // Fake domain name 
     const domainName =  

@@ -10,7 +10,7 @@ var faker = require('faker')
 // Than redirected to / index page. 
 
 router.get('/generate-fake-data', function(req, res, next) {
-  for (var i = 0; i < 90; i++) {
+  for (var i = 0; i < 30; i++) {
       var user = new User()
 
       user.username= faker.name.firstName()+" "+faker.name.jobType(),
@@ -24,6 +24,35 @@ router.get('/generate-fake-data', function(req, res, next) {
           if (err) throw err
       })
   }
+  {
+    var user = new User()
+
+    user.username= faker.name.firstName()+" "+faker.name.jobType(),
+    user.IPaddress= faker.internet.ip(),
+    user.jobstat=faker.fake("Success"),
+    user.report=faker.fake("NoReportYet"),
+    user.location = faker.name.jobArea(), 
+    user.reportURL ="http://localhost:3000"+"/users/report/"+user._id,
+
+    user.save(function(err) {
+        if (err) throw err
+    })
+  }
+  {
+    var user = new User()
+
+    user.username= faker.name.firstName()+" "+faker.name.jobType(),
+    user.IPaddress= faker.internet.ip(),
+    user.jobstat=faker.fake("Unsuccesfull"),
+    user.report=faker.fake("NoReportYet"),
+    user.location = faker.name.jobArea(), 
+    user.reportURL ="http://localhost:3000"+"/users/report/"+user._id,
+
+    user.save(function(err) {
+        if (err) throw err
+    })
+}
+
   res.redirect('/')
 })
 
