@@ -15,7 +15,7 @@ router.get('/generate-fake-data', function(req, res, next) {
 
       user.username= faker.name.firstName()+" "+faker.name.jobType(),
       user.IPaddress= faker.internet.ip(),
-      user.jobstat=faker.fake("NeverRun"),
+      user.jobstat=faker.fake("NeverRun,Success,Unsuccesfull"),
       user.report=faker.fake("NoReportYet"),
       user.location = faker.name.jobArea(), 
       user.reportURL ="http://localhost:3000"+"/users/report/"+user._id,
