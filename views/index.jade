@@ -4,12 +4,8 @@ block content
   
 
   // Wrapper
-  //#wrapper.container-fluid
   div#wrapper.container-fluid 
     div.row
-     //div.col-md-12.text-center.pt-3
-      //h1= title
-      //p Duplicati  centralized management dashboard
      div.col-md-5
       .row.px-3
 
@@ -17,8 +13,8 @@ block content
          h1.m-0.text-uppercase= title
          p.title.m-0 Duplicati  centralized management dashboard
 
-         // USER INFO
-        #userInfo.col-md-12.card.my-1.p-3
+        // USER INFO
+        #userInfo.col-md-12.card.my-2.p-3
           span.user User: 
            span#userInfoName
           p.mt-3
@@ -45,7 +41,7 @@ block content
         // /USER INFO
 
         //UPDATE USER
-        #updateInfoChunk.hidden.col-md-12.my-1.card.p-3
+        #updateInfoChunk.hidden.col-md-12.my-2.card.p-3
             h2.mb-3 Update Info
             #updateInfo.row
              .col-md-6
@@ -61,7 +57,7 @@ block content
         // /UPDATE USER 
 
         // ADD USER
-        div.addUserDiv.col-md-12.card.p-3.my-1
+        div.addUserDiv.col-md-12.card.p-3.my-2
          .row
           .col-md-12
            h2.mb-3 Add user
@@ -87,7 +83,7 @@ block content
              input#inputUserReport.form-control(type='text',value="NoReportYet" , placeholder='Report')
             .col-md-3
              button#btnAddUser.btn.btn-custom-color.btn-block Add
-            // /ADD USER
+        // ADD USER
 
 
      div.col-md-7.vertical-border
@@ -138,11 +134,7 @@ block content
                     tbody.pagination-container.clearfix#clearfix
             .pagination-nav 
             // /USER LIST  
-
-       
-       
-        
-      // /WRAPPER
+  // /WRAPPER
 
 
   

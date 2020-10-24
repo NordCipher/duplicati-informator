@@ -3,7 +3,6 @@ body {
   background-image: linear-gradient(to right, ghostwhite, lightgray);
 }
 
-
 .products-view-all{
 	height: 80vh;
 	overflow: hidden;
@@ -31,11 +30,6 @@ body {
 }
 
 
-.post_search_submit{
-	position: relative;
-	top: 24px;
-}
-
 .linkdeleteuser{
 	color: #EB5250;
 }
@@ -58,6 +52,8 @@ body {
 	font-weight: bold;
 
 }
+
+/*links in the table*/
 
 .vertical-border{
 	border-left: 2px solid#8b8e9c;
@@ -108,15 +104,8 @@ strong
 	font-weight: bold;
 }
 
-.btn-custom-color{
-	background-color: #1976d2;
-	color: white;
-}
 
-.btn-custom-color:hover{
-	color: white;
-	background-color: #5492C3;
-}
+/*buttons*/
 
 input,
 ::placeholder,
@@ -132,6 +121,26 @@ input{
 article label{
 	color: #5A6065;
 	font-weight: bold;
+}
+
+/*general styles*/
+
+
+
+.btn-custom-color{
+	background-color: #1976d2;
+	color: white;
+}
+
+.btn-custom-color:hover{
+	color: white;
+	background-color: #5492C3;
+}
+
+
+.post_search_submit{
+	position: relative;
+	top: 24px;
 }
 
 
