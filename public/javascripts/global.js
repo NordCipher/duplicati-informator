@@ -105,8 +105,8 @@ function showUserInfo(event) {
     $('#userInfoJobStat').text(thisUserObject.jobstat);
     $('#userInfoLocation').text(thisUserObject.location);
     $('#userInfoUserURL').text(hosturl+path+thisUserObject._id);
-    $('#userInfo').toggle();
-   
+    // $('#userInfo').toggle();
+  
 };
 
 // Add User

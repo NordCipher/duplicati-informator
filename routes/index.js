@@ -103,13 +103,13 @@ router.post('/users/view-front', function(req, res){
               pag_content += 
                           '<tr>' + '<td><a href="#" class="linkshowuser" rel="' + all_items[key].username + '">' + all_items[key].username + '</a></td>'+'<td id="jobstat-td" class="jobstat-class-'+ all_items[key].jobstat + '">' + all_items[key].jobstat + '</td>'+
                           '<td><a href="http://' + all_items[key].IPaddress + '" target="_blank" class="linkremotedash">' + all_items[key].IPaddress + ':8200 </a></td>'+
-                          '<td><a href="#" class="linkdeleteuser" rel="' + all_items[key]._id + '">delete</a></td>'+'<td><a href="#" class="linkupdateinfo" rel="' + all_items[key]._id + '">update</a></td>'+'</tr>'
+                          '<td><a href="#" class="linkdeleteuser" rel="' + all_items[key]._id + '"><i class="fa fa-trash"></i></a></td>'+'<td><a href="#" class="linkupdateinfo" rel="' + all_items[key]._id + '"><i class="fa fa-pencil"></i></a></td>'+'</tr>'
           }
       }
       
       pag_content = pag_content + "<br class = 'clear' />";
       
-   
+  
 
       no_of_paginations = Math.ceil(count / per_page);
 

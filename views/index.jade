@@ -1,116 +1,148 @@
 extends layout
 
 block content
-  h1= title
-  p Duplicati  centralized management dashboard
+  
 
   // Wrapper
-  #wrapper
+  //#wrapper.container-fluid
+  div#wrapper.container-fluid 
+    div.row
+     //div.col-md-12.text-center.pt-3
+      //h1= title
+      //p Duplicati  centralized management dashboard
+     div.col-md-5
+      .row.px-3
 
-    // USER INFO
-    #userInfo
-      h2 User Info for
-      h3#userInfoName
-      p
-        strong IP:
-        |  <span id='userInfoIP'></span>
-        br
-        strong Job Status:
-        |  <span id='userInfoJobStat'></span>
-        br
-        strong Location:
-        |  <span id='userInfoLocation'></span>
-        br
-        strong HTML URL:
-        |  <span id='userInfoUserURL'></span>
-        br
-        strong Report:
-        br
-        |  <span id='userInfoReport'></span>
-        br
+        div.col-md-12.my-3.mb-4
+         h1.m-0.text-uppercase= title
+         p.title.m-0 Duplicati  centralized management dashboard
+
+         // USER INFO
+        #userInfo.col-md-12.card.my-1.p-3
+          span.user User: 
+           span#userInfoName
+          p.mt-3
+            strong.mr-1 IP:
+            |  <span id='userInfoIP'></span>
+            hr
+          p
+            strong.mr-1 Job status:
+            |  <span id='userInfoJobStat'></span>
+            hr
+          p
+            strong.mr-1 Location:
+            |  <span id='userInfoLocation'></span>
+            hr
+          p
+            strong.mr-1 Url:
+            |  <span id='userInfoUserURL' class="font-weight-bold"></span>
+            hr
+          p
+            strong.mr-1 Report:
+            |  <span id='userInfoReport'></span>
+            br
+          
+        // /USER INFO
+
+        //UPDATE USER
+        #updateInfoChunk.hidden.col-md-12.my-1.card.p-3
+            h2.mb-3 Update Info
+            #updateInfo.row
+             .col-md-6
+                input#updateUserName.form-control(type='text', placeholder='Username')
+             .col-md-6
+                input#updateUserIP.form-control(type='text', placeholder='IP address')
+             .col-md-6.mt-4
+                input#updateUserLocation.form-control(type='text', placeholder='Location')
+             .col-md-3.mt-4
+                button#btnUpdateUser.btn.btn-custom-color.mr-3.btn-block Update
+             .col-md-3.mt-4
+                button#btnCancelUpdateInfo.btn.btn-outline-danger.btn-block Cancel
+        // /UPDATE USER 
+
+        // ADD USER
+        div.addUserDiv.col-md-12.card.p-3.my-1
+         .row
+          .col-md-12
+           h2.mb-3 Add user
+          #addUserForm.col-md-12
+           .row
+            .col-md-6
+             input#inputUserName.form-control(type='text', placeholder='Username')
+            .col-md-6
+             input#inputUserIP.form-control(type='text', placeholder='IP address')
+             //- input#inputUserLocation.form-control(type='text', placeholder='Location')
+             +generateDropDownList('', 'browsers', array)
+             mixin generateDropDownList(label, id, array)
+              label(for=id) #{label}
+            .col-md-6.mb-4
+              input#inputUserLocation.form-control(type='text', placeholder='Location',list='browsers')
+              datalist(name=id placeholder=placeholder id=id)
+                 each val in array
+                   option(value= val)
+             //- input#inputUserURL(type='text', value"placeholder='HTML report URL')
+            .col-md-6.mb-4
+             input#inputUserJobStat.form-control(type='text', value="NeverRun" , placeholder='Job status')
+            .col-md-6
+             input#inputUserReport.form-control(type='text',value="NoReportYet" , placeholder='Report')
+            .col-md-3
+             button#btnAddUser.btn.btn-custom-color.btn-block Add
+            // /ADD USER
+
+
+     div.col-md-7.vertical-border
+         .clearfix.pt-4.card.p-2.mt-3
+          h2.pl-3.mb-3 Filter users
+          article.navbar-form.navbar-left.ml-b.row.px-3
+           .col-md-2
+            label Total show:
+            select.form-control.post_max.m-b
+             option(value='15') 15
+             option(value='30') 30
+             option(value='90') 90
+           .col-md-3
+            label Order by:
+            select.form-control.post_name.m-b
+             option(value='username') Username
+             option(value='jobstat') Job Status
+             //- option(value='quantity') Quantity
+           .col-md-2
+            label Order by:
+            select.form-control.post_sort.m-b
+             option(value='ASC') Asc
+             option(value='DESC') Desc
+           .col-md-3
+            label Search keyword: 
+            input.form-control.post_search_text.m-b(type='text', placeholder='Enter keyword')
+           .col-md-2
+            button.btn.btn-custom-color.post_search_submit.m-b.btn-block(type='submit') Filter
+           .col-md-12
+
+         .products-view-all.p-4.card
+          .row
+           .col-md-12
+            form.post-list
+                input(type='hidden', value='')
+            
+            // USER LIST
+            h2.mb-3 User list
+            #userList
+              .clearfix#clearfix
+                table.table.table-hover
+                    thead.thead-light.text-uppercase
+                        th UserName
+                        th Status
+                        th Remote Access
+                        th Delete
+                        th Update
+                    tbody.pagination-container.clearfix#clearfix
+            .pagination-nav 
+            // /USER LIST  
+
        
-    // /USER INFO
-
-    .container.products-view-all
-        form.post-list
-            input(type='hidden', value='')
-        .clearfix
-            article.navbar-form.navbar-left.p-0.m-0.ml-b
-                .form-group
-                    label Per Page: 
-                    select.form-control.post_max.m-b
-                        option(value='15') 15
-                        option(value='30') 30
-                        option(value='90') 90
-                label Search Keyword: 
-                    input.form-control.post_search_text.m-b(type='text', placeholder='Enter a keyword')
-                .form-group
-                    label Order By: 
-                    select.form-control.post_name.m-b
-                        option(value='username') Username
-                        option(value='jobstat') Job Status
-                        //- option(value='quantity') Quantity
-                    select.form-control.post_sort.m-b
-                        option(value='ASC') ASC
-                        option(value='DESC') DESC
-                input.btn.btn-primary.post_search_submit.m-b(type='submit', value='Filter')
-        hr
-        // USER LIST
-        h2 User List
-        #userList
-          .clearfix#clearfix
-            table
-                thead
-                    th UserName
-                    th Status
-                    th Remote Access
-                    th Delete?
-                    th Update???
-                tbody.pagination-container.clearfix#clearfix
-        .pagination-nav 
-        // /USER LIST  
-
-    // ADD USER
-    div
-      #addUserForm.input-group.mb-3
-        h2 Add User
-        #addUser.input-group-prepend
-          fieldset
-            input#inputUserName.form-control(type='text', placeholder='Username')
-            input#inputUserIP.form-control(type='text', placeholder='IP Address')
-            br
-            //- input#inputUserLocation.form-control(type='text', placeholder='Location')
-            +generateDropDownList('', 'browsers', array)
-            mixin generateDropDownList(label, id, array)
-             label(for=id) #{label}
-             input#inputUserLocation.form-control(type='text', placeholder='Location',list='browsers')
-             datalist(name=id placeholder=placeholder id=id)
-                each val in array
-                  option(value= val)
-            //- input#inputUserURL(type='text', value"placeholder='HTML report URL')
-            br
-            input#inputUserJobStat.form-control(type='text', value="NeverRun" , placeholder='Job Status')
-            input#inputUserReport.form-control(type='text',value="NoReportYet" , placeholder='Report')
-            br
-            button#btnAddUser.btn.btn-primary Add User
-    // /ADD USER
-
-    //UPDATE USER
-    div
-      #updateInfoChunk.input-group.mb-3.hidden
-        h2 Update Info
-        #updateInfo.input-group-prepend
-          fieldset
-            input#updateUserName.form-control(type='text', placeholder='username')  
-            input#updateUserIP.form-control(type='text', placeholder='IP address')
-            br
-            input#updateUserLocation.form-control(type='text', placeholder='location')
-            br
-            button#btnUpdateUser.btn.btn-primary Update User
-            button#btnCancelUpdateInfo.btn.btn-outline-secondar Cancel
-    // /UPDATE USER  
-    
-  // /WRAPPER
+       
+        
+      // /WRAPPER
 
 
   
