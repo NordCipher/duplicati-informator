@@ -41,20 +41,22 @@ block content
         // /USER INFO
 
         //UPDATE USER
-        #updateInfoChunk.hidden.col-md-12.my-2.card.p-3
-            h2.mb-3 Update Info
-            #updateInfo.row
-             .col-md-6
-                input#updateUserName.form-control(type='text', placeholder='Username')
-             .col-md-6
-                input#updateUserIP.form-control(type='text', placeholder='IP address')
-             .col-md-6.mt-4
-                input#updateUserLocation.form-control(type='text', placeholder='Location')
-             .col-md-3.mt-4
-                button#btnUpdateUser.btn.btn-custom-color.mr-3.btn-block Update
-             .col-md-3.mt-4
-                button#btnCancelUpdateInfo.btn.btn-outline-danger.btn-block Cancel
-        // /UPDATE USER 
+        div.col-md-12.my-2.card.p-3
+         #updateInfoChunk.input-group.mb-3.hidden
+          h2 Update User
+         #updateInfo.input-group-prepend
+           fieldset.row
+            div.col-md-6
+             input#updateUserName.form-control(type='text', placeholder='username')
+            div.col.md-6
+             input#updateUserIP.form-control(type='text', placeholder='IP address')
+            div.col-md-6.mt-3
+             input#updateUserLocation.form-control(type='text', placeholder='location')
+            div.col-md-3.mt-3
+             button#btnUpdateUser.btn.btn-custom-color.btn-block Update User
+            div.col-md-3.mt-3
+             button#btnCancelUpdateInfo.btn.btn-danger.btn-block Cancel
+        // /UPDATE USER
 
         // ADD USER
         div.col-md-12.my-2.card.p-3
