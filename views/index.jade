@@ -57,33 +57,33 @@ block content
         // /UPDATE USER 
 
         // ADD USER
-        div.addUserDiv.col-md-12.card.p-3.my-2
-         .row
-          .col-md-12
-           h2.mb-3 Add user
-          #addUserForm.col-md-12
-           .row
-            .col-md-6
+        div.col-md-12.my-2.card.p-3
+          div#addUserForm
+            h2 Add User
+          #addUser.input-group-prepend
+           fieldset.row
+            div.col-md-6
              input#inputUserName.form-control(type='text', placeholder='Username')
-            .col-md-6
-             input#inputUserIP.form-control(type='text', placeholder='IP address')
+            div.col-md-6
+             input#inputUserIP.form-control(type='text', placeholder='IP Address')
+            div.col-md-6
              //- input#inputUserLocation.form-control(type='text', placeholder='Location')
              +generateDropDownList('', 'browsers', array)
              mixin generateDropDownList(label, id, array)
               label(for=id) #{label}
-            .col-md-6.mb-4
               input#inputUserLocation.form-control(type='text', placeholder='Location',list='browsers')
               datalist(name=id placeholder=placeholder id=id)
-                 each val in array
-                   option(value= val)
-             //- input#inputUserURL(type='text', value"placeholder='HTML report URL')
-            .col-md-6.mb-4
-             input#inputUserJobStat.form-control(type='text', value="NeverRun" , placeholder='Job status')
-            .col-md-6
+                each val in array
+                  option(value= val)
+            //- input#inputUserURL(type='text', value"placeholder='HTML report URL')
+            div.col-md-6.mb-3
+             label
+             input#inputUserJobStat.form-control(type='text', value="NeverRun" , placeholder='Job Status')
+            div.col-md-6
              input#inputUserReport.form-control(type='text',value="NoReportYet" , placeholder='Report')
-            .col-md-3
-             button#btnAddUser.btn.btn-custom-color.btn-block Add
-        // ADD USER
+            div.col-md-3
+             button#btnAddUser.btn.btn-custom-color.btn-block Add User
+        // /ADD USER
 
 
      div.col-md-7.vertical-border
