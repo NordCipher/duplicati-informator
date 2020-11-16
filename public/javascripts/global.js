@@ -30,9 +30,42 @@ $('#updateInfo input').on('change', function(){$(this).addClass('updated')});
 
 // Update info button click
 $('#btnUpdateUser').on('click', updateInfo);
+$('#btnUpdateUser').click(function(){
+  $("#updateInfo").hide();
+})
 
 // Cancel Update User button click
-$('#btnCancelUpdateInfo').on('click', toggleAddUpdateChunks);
+// $('#btnCancelUpdateInfo').on('click', toggleAddUpdateChunks);
+$('#btnCancelUpdateInfo').click(function(){
+      $("#updateInfo").hide();
+  })
+
+$("tbody").on( "click", ".fa-pencil", function(){
+  $("#btnUpdateUser").prop('disabled', false);
+  $("#updateInfo").show();
+})
+
+
+// Toggle Add User card
+$(".fa-plus").click(function(){
+  $("#addUser").toggle();
+  $(this).hide();
+  $(".fa-minus").show();
+})
+
+$(".fa-minus").click(function(){
+  $("#addUser").toggle();
+  $(this).hide();
+  $(".fa-plus").show();
+})
+
+// Add user on click on button and close card 
+$("#btnAddUser").click(function(){
+  $("#addUser").hide();
+  $(".fa-minus").hide();
+  $(".fa-plus").show();
+
+})
 
 });
 
@@ -41,7 +74,7 @@ $('#btnCancelUpdateInfo').on('click', toggleAddUpdateChunks);
 
 // Toggle Displaying Add and Update Chunks
 function toggleAddUpdateChunks() {
-  $('#addUserForm').toggle();
+  // $('#addUserForm').toggle();
   $("#updateInfoChunk").toggleClass('hidden');
 }
 

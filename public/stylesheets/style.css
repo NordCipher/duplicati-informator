@@ -38,8 +38,10 @@ body {
 	color: skyblue;
 }
 
-.jobstat-class-Unsuccesfull{
-	color: black;
+.jobstat-class-Unsuccesfull,
+.jobstat-class-Run{
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 .jobstat-class-NeverRun{
@@ -50,8 +52,8 @@ body {
 .jobstat-class-Success{
 	color: darkgreen;
 	font-weight: bold;
-
 }
+
 
 /*links in the table*/
 
@@ -123,6 +125,18 @@ article label{
 	font-weight: bold;
 }
 
+
+#addUser,
+.fa-minus,
+#updateInfo{
+	display: none;
+}
+
+.fa-plus,
+.fa-minus{
+	cursor: pointer;
+	color: #5492C3;
+}
 /*general styles*/
 
 
@@ -151,4 +165,3 @@ article label{
 .pagination-nav ul li.active:hover {cursor: pointer; background: #1976d2; color: white; }
 .pagination-nav ul li.inactive {background: #E9ECEF;}
 .pagination-nav ul li.selected {background: #1976d2; color: white;}
-
